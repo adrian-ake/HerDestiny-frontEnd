@@ -65,11 +65,12 @@ export class PagosAlquilerComponent implements OnInit {
   private inicializarFormulario() {
     this.miFormulario = this.fb.group({
       titularTj: ['', Validators.required],
-      numTarjeta: ['', [Validators.required, validarNumeroTarjeta()]], // Usa la función personalizada
-      fcVencimiento: ['', Validators.required],     
-      cvv: ['', Validators.required]
+      numTarjeta: ['', [Validators.required, validarNumeroTarjeta()]],
+      fcVencimiento: ['', Validators.required],
+      cvv: ['', [Validators.required, Validators.maxLength(3)]], // Limitar a 3 caracteres
     });
   }
+  
 
   registrarAlquiler() {
     if (this.miFormulario.valid) {
